@@ -28,3 +28,16 @@ function computerPlay() {
   // return selection
   return(computerWeapon);
 }
+
+const computerSelection = computerPlay();
+const playerSelection = "Rock";
+function playRound(playerSelection, computerSelection) {
+  // if playerSelection === computerSelection, return that game ended in a tie
+  if (playerSelection === computerSelection) {
+    return(`It's a tie, you both played ${playerSelection}!`)
+  } else if ((playerSelection === "Rock" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Rock")) {
+    return(`You lose! ${computerSelection} beats ${playerSelection}.`);
+  } else {
+    return(`You won! ${playerSelection} beats ${computerSelection}.`);
+  }
+}
