@@ -31,6 +31,7 @@ function computerPlay() {
 
 const computerSelection = computerPlay();
 const playerSelection = "Rock";
+
 function playRound(playerSelection, computerSelection) {
   // if playerSelection === computerSelection, return that game ended in a tie
   if (playerSelection === computerSelection) {
@@ -40,4 +41,11 @@ function playRound(playerSelection, computerSelection) {
   } else {
     return(`You won! ${playerSelection} beats ${computerSelection}.`);
   }
+}
+
+function convertToCapitalCase(string) {
+  // convert string to all lowercase
+  // store length of string in variable
+  // put first letter.toUpperCase in new variable
+  // return firstletter-capitalized concattenated with string in lowercase starting from the second character to the end
 }
