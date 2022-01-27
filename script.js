@@ -29,6 +29,16 @@ function computerPlay() {
   return(computerWeapon);
 }
 
+function game() {
+// Briefing: play a 5 round game + keep score + report winner or loser at the end
+// Use console.log to display results of each round and winner
+// Use prompt() to get input from the user
+
+// TODO:
+// - create line by line pseudocode
+// - change returnvalue for playRound to return only winner?
+}
+
 const computerSelection = computerPlay();
 const playerSelection = "Rock";
 
