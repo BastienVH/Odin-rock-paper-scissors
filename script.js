@@ -44,8 +44,5 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function convertToCapitalCase(string) {
-  // convert string to all lowercase
-  // store length of string in variable
-  // put first letter.toUpperCase in new variable
-  // return firstletter-capitalized concattenated with string in lowercase starting from the second character to the end
+  return string[0].toUpperCase() + string.toLowerCase().slice(1); 
 }
