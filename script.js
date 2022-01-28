@@ -30,27 +30,37 @@ function computerPlay() {
 }
 
 function game() {
-// Briefing: play a 5 round game + keep score + report winner or loser at the end
-// Use console.log to display results of each round and winner
-// Use prompt() to get input from the user
+  // Briefing: play a 5 round game + keep score + report winner or loser at the end
+  // Use console.log to display results of each round and winner
+  // Use prompt() to get input from the user
 
-// TODO:
-// - create line by line pseudocode
-
-// Announce game will start
-// create variable to store points for player and computer
-// Loop the following 5 times:
-  // Prompt user for choice of weapon, store in variable
-  // store computerPlay in variable
-  // Compare values to play a round playRoundGetWinner
-  // check return value and increment winner points
-  // display current score
-// Check who has more points
-// Declare the winner of the game
+  // Announce game will start
+  alert("Get ready to play Rock-Paper-Scissors!");
+  // create variable to store points for player and computer
+  let computerPoints = 0;
+  let playerPoints = 0;
+  // Loop the following 5 times:
+  for (let i = 0; i < 5; i++) {
+    // Prompt user for choice of weapon, store in variable
+    let playerSelection = convertToCapitalCase(prompt("Choose your weapon: Rock / Paper / Scissors"));
+    // store computerPlay in variable
+    let computerSelection = computerPlay();
+    // Compare values to play a round playRoundGetWinner
+    let winner = playRoundGetWinner(playerSelection, computerSelection);
+    // check return value and increment winner points
+    if (winner === "Player") { 
+      playerPoints++;
+    } else if (winner === "Computer") {
+      computerPoints++;
+    }
+    // display current score
+    console.log(`Current score: Player ${playerPoints} - Computer ${computerPoints}`);
+  }
+  // Check who has more points
+  (playerPoints > computerPoints) ? console.log("Congratulations, you won!") : console.log("Too bad, you lost!");
 }
 
-const computerSelection = computerPlay();
-const playerSelection = "Rock";
+
 
 function playRoundGetWinner(playerSelection, computerSelection) {
   // if playerSelection === computerSelection, return that game ended in a tie
