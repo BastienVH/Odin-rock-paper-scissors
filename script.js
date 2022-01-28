@@ -37,7 +37,13 @@ function game() {
     }
     console.log(`Current score: Player ${playerPoints} - Computer ${computerPoints}`);
   }
-  (playerPoints > computerPoints) ? console.log("Congratulations, you won!") : console.log("Too bad, you lost!");
+  if (playerPoints > computerPoints) {
+    console.log("Congratulations, you won!");
+  } else if (playerPoints === computerPoints) {
+    console.log("The game ended in a tie.");
+  } else {
+    console.log("Too bad, you lost!");
+  }
 }
 
 function playRoundGetWinner(playerSelection, computerSelection) {
