@@ -35,7 +35,7 @@ function game() {
   // Use prompt() to get input from the user
 
   // Announce game will start
-  alert("Get ready to play Rock-Paper-Scissors!");
+  console.log("Get ready to play Rock-Paper-Scissors!");
   // create variable to store points for player and computer
   let computerPoints = 0;
   let playerPoints = 0;
