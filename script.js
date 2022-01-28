@@ -36,20 +36,22 @@ function game() {
 
 // TODO:
 // - create line by line pseudocode
-// - change returnvalue for playRound to return only winner?
 }
 
 const computerSelection = computerPlay();
 const playerSelection = "Rock";
 
-function playRound(playerSelection, computerSelection) {
+function playRoundGetWinner(playerSelection, computerSelection) {
   // if playerSelection === computerSelection, return that game ended in a tie
   if (playerSelection === computerSelection) {
-    return(`It's a tie, you both played ${playerSelection}!`)
+    console.log(`It's a tie, you both played ${playerSelection}!`);
+    return("tie");
   } else if ((playerSelection === "Rock" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Rock")) {
-    return(`You lose! ${computerSelection} beats ${playerSelection}.`);
+    console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+    return("Computer");
   } else {
-    return(`You won! ${playerSelection} beats ${computerSelection}.`);
+    console.log(`You won! ${playerSelection} beats ${computerSelection}.`);
+    return("Player");
   }
 }
 
