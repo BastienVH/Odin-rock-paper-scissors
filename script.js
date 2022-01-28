@@ -1,13 +1,3 @@
-/*
-Runthrough of the program (1 iteration):
-- ask user for input (rock, paper, scissors)
-- verify input is correct
-- let computer randomly select between rock, paper and scissors
-- compare user selection and computer selection to return winner
-- output chosen weapons and winner
-*/
-
-
 function computerPlay() {
   // generate random number between 1 and 3
   let randomNum = Math.floor(Math.random()*3) + 1;
@@ -41,10 +31,11 @@ function game() {
   let playerPoints = 0;
   // Loop the following 5 times:
   for (let i = 0; i < 5; i++) {
-    // Prompt user for choice of weapon, store in variable
-    let playerSelection = convertToCapitalCase(prompt("Choose your weapon: Rock / Paper / Scissors"));
-    // store computerPlay in variable
     let computerSelection = computerPlay();
+    let playerSelection = convertToCapitalCase(prompt("Choose your weapon: Rock / Paper / Scissors"));
+    while (verifyInput(playerSelection) == false) {
+      playerSelection = prompt("Please enter Rock, Paper or Scissors");
+    }
     // Compare values to play a round playRoundGetWinner
     let winner = playRoundGetWinner(playerSelection, computerSelection);
     // check return value and increment winner points
@@ -59,8 +50,6 @@ function game() {
   // Check who has more points
   (playerPoints > computerPoints) ? console.log("Congratulations, you won!") : console.log("Too bad, you lost!");
 }
-
-
 
 function playRoundGetWinner(playerSelection, computerSelection) {
   // if playerSelection === computerSelection, return that game ended in a tie
@@ -78,4 +67,12 @@ function playRoundGetWinner(playerSelection, computerSelection) {
 
 function convertToCapitalCase(string) {
   return string[0].toUpperCase() + string.toLowerCase().slice(1); 
+}
+
+function verifyInput(string) {
+  if ((string === "Rock") || (string === "Paper") || (string === "Scissors")) {
+    return(true);
+  } else {
+    return false;
+  }
 }
