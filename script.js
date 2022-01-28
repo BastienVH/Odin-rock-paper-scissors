@@ -1,3 +1,4 @@
+// Make global variable for playerSelection
 let playerSelection;
 
 function computerPlay() {
@@ -17,7 +18,6 @@ function computerPlay() {
       computerWeapon = "Scissors";
       break;
   }
-  // return selection
   return(computerWeapon);
 }
 
