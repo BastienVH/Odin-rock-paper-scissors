@@ -25,10 +25,11 @@ function game() {
   let playerPoints = 0;
   for (let i = 0; i < 5; i++) {
     let computerSelection = computerPlay();
-    let playerSelection = convertToCapitalCase(prompt("Choose your weapon: Rock / Paper / Scissors"));
-    while (verifyInput(playerSelection) == false) {
-      playerSelection = prompt("Please enter Rock, Paper or Scissors");
+    let playerInput = prompt("Choose your weapon: Rock / Paper / Scissors");
+    while ( (!playerInput) || (verifyInput(playerInput) == false)) {
+      playerInput = prompt("Please enter Rock, Paper or Scissors");
     }
+    let playerSelection = convertToCapitalCase(playerInput);
     let winner = playRoundGetWinner(playerSelection, computerSelection);
     if (winner === "Player") { 
       playerPoints++;
@@ -61,10 +62,11 @@ function playRoundGetWinner(playerSelection, computerSelection) {
 }
 
 function convertToCapitalCase(string) {
-  return string[0].toUpperCase() + string.toLowerCase().slice(1); 
+    return string[0].toUpperCase() + string.toLowerCase().slice(1);
 }
 
 function verifyInput(string) {
+  string = convertToCapitalCase(string);
   if ((string === "Rock") || (string === "Paper") || (string === "Scissors")) {
     return(true);
   } else {
