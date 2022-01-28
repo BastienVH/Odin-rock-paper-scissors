@@ -36,6 +36,17 @@ function game() {
 
 // TODO:
 // - create line by line pseudocode
+
+// Announce game will start
+// create variable to store points for player and computer
+// Loop the following 5 times:
+  // Prompt user for choice of weapon, store in variable
+  // store computerPlay in variable
+  // Compare values to play a round playRoundGetWinner
+  // check return value and increment winner points
+  // display current score
+// Check who has more points
+// Declare the winner of the game
 }
 
 const computerSelection = computerPlay();
