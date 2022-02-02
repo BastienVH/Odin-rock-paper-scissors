@@ -25,20 +25,18 @@ function game() {
   console.log("Get ready to play Rock-Paper-Scissors!");
   let computerPoints = 0;
   let playerPoints = 0;
-  for (let i = 0; i < 5; i++) {
-    let computerSelection = computerPlay();
-    playerSelection = prompt("Choose your weapon: Rock / Paper / Scissors");
-    while (verifyInput(playerSelection) == false) {
-      playerSelection = prompt("Please enter Rock, Paper or Scissors");
-    }
-    let winner = playRoundGetWinner(playerSelection, computerSelection);
-    if (winner === "Player") { 
-      playerPoints++;
-    } else if (winner === "Computer") {
-      computerPoints++;
-    }
-    console.log(`Current score: Player ${playerPoints} - Computer ${computerPoints}`);
+  let computerSelection = computerPlay();
+  playerSelection = prompt("Choose your weapon: Rock / Paper / Scissors");
+  while (verifyInput(playerSelection) == false) {
+    playerSelection = prompt("Please enter Rock, Paper or Scissors");
   }
+  let winner = playRoundGetWinner(playerSelection, computerSelection);
+  if (winner === "Player") { 
+    playerPoints++;
+  } else if (winner === "Computer") {
+    computerPoints++;
+  }
+  console.log(`Current score: Player ${playerPoints} - Computer ${computerPoints}`);
   if (playerPoints > computerPoints) {
     console.log("Congratulations, you won!");
   } else if (playerPoints === computerPoints) {
