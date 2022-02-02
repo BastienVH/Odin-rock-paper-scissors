@@ -12,4 +12,4 @@ First to get 5 points wins the game.
 - [x] add a div to display results + move from console.log to DOM methods
 - [x] display running score and announce a winner once a player reaches 5 points
 - [x] remove unnessecary helper function for verifying input + function calls
-- [] solve issue where computer doesn't get awarded points
+- [x] solve issue where computer doesn't get awarded points

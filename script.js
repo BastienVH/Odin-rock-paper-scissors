@@ -19,10 +19,8 @@ function updateScore(winner) {
   }
   if (playerPoints === 5) {
     resultOutput.textContent = "Congratulations, you won!";
-    return;
   } else if (computerPoints === 5) {
     resultOutput.textContent = "Too bad, you lost!"
-    return;
   } else {
     resultOutput.textContent = `Current score: Player ${playerPoints} - Computer ${computerPoints}`;
   }
@@ -57,7 +55,6 @@ function playRoundGetWinner(e) {
     playOutput.textContent = `It's a tie, you both played ${playerSelection}!`;
   } else if ((playerSelection === "Rock" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Rock")) {
     playOutput.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
-    return("Computer");
     updateScore("Computer");
   } else {
     playOutput.textContent = `You won! ${playerSelection} beats ${computerSelection}.`;
