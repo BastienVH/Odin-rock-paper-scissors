@@ -1,10 +1,32 @@
-// Make global variable for playerSelection
+// initialize variables
 let playerSelection;
+let computerPoints = 0;
+let playerPoints = 0;
 
-// get all buttons
-// add event listener to each button, that runs playRound and reads id for chosen button
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click", playRoundGetWinner));
+
+// target div to display results
+const resultOutput = document.querySelector("#results");
+const playOutput = document.querySelector("#play");
+
+function updateScore(winner) {
+  // add points to whomever is the winner
+  if (winner === "Player") { 
+    playerPoints++;
+  } else if (winner === "Computer") {
+    computerPoints++;
+  }
+  if (playerPoints === 5) {
+    resultOutput.textContent = "Congratulations, you won!";
+    return;
+  } else if (computerPoints === 5) {
+    resultOutput.textContent = "Too bad, you lost!"
+    return;
+  } else {
+    resultOutput.textContent = `Current score: Player ${playerPoints} - Computer ${computerPoints}`;
+  }
+}
 
 function computerPlay() {
   // generate random number between 1 and 3
@@ -26,60 +48,19 @@ function computerPlay() {
   return(computerWeapon);
 }
 
-function game() {
-  console.log("Get ready to play Rock-Paper-Scissors!");
-  let computerPoints = 0;
-  let playerPoints = 0;
-  let computerSelection = computerPlay();
-  playerSelection = prompt("Choose your weapon: Rock / Paper / Scissors");
-  while (verifyInput(playerSelection) == false) {
-    playerSelection = prompt("Please enter Rock, Paper or Scissors");
-  }
-  let winner = playRoundGetWinner(playerSelection, computerSelection);
-  if (winner === "Player") { 
-    playerPoints++;
-  } else if (winner === "Computer") {
-    computerPoints++;
-  }
-  console.log(`Current score: Player ${playerPoints} - Computer ${computerPoints}`);
-  if (playerPoints > computerPoints) {
-    console.log("Congratulations, you won!");
-  } else if (playerPoints === computerPoints) {
-    console.log("The game ended in a tie.");
-  } else {
-    console.log("Too bad, you lost!");
-  }
-}
-
 function playRoundGetWinner(e) {
   // get id from clicked button to store in playerSelection
   const playerSelection = e.target.id;
   const computerSelection = computerPlay();
   // if playerSelection === computerSelection, return that game ended in a tie
   if (playerSelection === computerSelection) {
-    console.log(`It's a tie, you both played ${playerSelection}!`);
-    return("tie");
+    playOutput.textContent = `It's a tie, you both played ${playerSelection}!`;
   } else if ((playerSelection === "Rock" && computerSelection === "Paper") || (playerSelection === "Paper" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Rock")) {
-    console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
+    playOutput.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
     return("Computer");
+    updateScore("Computer");
   } else {
-    console.log(`You won! ${playerSelection} beats ${computerSelection}.`);
-    return("Player");
-  }
-}
-
-function convertToCapitalCase(string) {
-    return string[0].toUpperCase() + string.toLowerCase().slice(1);
-}
-
-function verifyInput(string) {
-  if (!string) {
-    return false;
-  }
-  playerSelection = convertToCapitalCase(string);
-  if ((playerSelection === "Rock") || (playerSelection === "Paper") || (playerSelection === "Scissors")) {
-    return true;
-  } else {
-    return false;
+    playOutput.textContent = `You won! ${playerSelection} beats ${computerSelection}.`;
+    updateScore("Player");
   }
 }
