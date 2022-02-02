@@ -1,6 +1,11 @@
 // Make global variable for playerSelection
 let playerSelection;
 
+// get all buttons
+// add event listener to each button, that runs playRound and reads id for chosen button
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => button.addEventListener("click", playRoundGetWinner));
+
 function computerPlay() {
   // generate random number between 1 and 3
   let randomNum = Math.floor(Math.random()*3) + 1;
@@ -46,7 +51,10 @@ function game() {
   }
 }
 
-function playRoundGetWinner(playerSelection, computerSelection) {
+function playRoundGetWinner(e) {
+  // get id from clicked button to store in playerSelection
+  const playerSelection = e.target.id;
+  const computerSelection = computerPlay();
   // if playerSelection === computerSelection, return that game ended in a tie
   if (playerSelection === computerSelection) {
     console.log(`It's a tie, you both played ${playerSelection}!`);

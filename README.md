@@ -7,7 +7,8 @@ First to get 5 points wins the game.
 
 ## TO DO
 [x] remove logic that plays exactly 5 rounds
-[] create three buttons, one for each selection
-[] add an event listener to each button to call playRound
+[x] create three buttons, one for each selection
+[x] add an event listener to each button to call playRound
 [] add a div to display results + move from console.log to DOM methods
 [] display running score and announce a winner once a player reaches 5 points
+[] remove unnessecary helper function for verifying input + function calls
